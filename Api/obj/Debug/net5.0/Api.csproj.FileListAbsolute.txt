@@ -11,6 +11,8 @@
 /home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Api/bin/Debug/net5.0/Swashbuckle.AspNetCore.Swagger.dll
 /home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Api/bin/Debug/net5.0/Swashbuckle.AspNetCore.SwaggerGen.dll
 /home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Api/bin/Debug/net5.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Api/bin/Debug/net5.0/Models.dll
+/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Api/bin/Debug/net5.0/Models.pdb
 /home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Api/obj/Debug/net5.0/Api.csprojAssemblyReference.cache
 /home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Api/obj/Debug/net5.0/Api.GeneratedMSBuildEditorConfig.editorconfig
 /home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Api/obj/Debug/net5.0/Api.AssemblyInfoInputs.cache

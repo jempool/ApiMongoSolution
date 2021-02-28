@@ -78,6 +78,16 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Models.dll": {}
+        }
       }
     }
   },
@@ -213,10 +223,16 @@
         "swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
+    },
+    "Models/1.0.0": {
+      "type": "project",
+      "path": "../Models/Models.csproj",
+      "msbuildProject": "../Models/Models.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "Models >= 1.0.0",
       "StyleCop.Analyzers >= 1.1.118",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
@@ -245,7 +261,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Models/Models.csproj": {
+              "projectPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Models/Models.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
