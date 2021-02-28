@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project>
+  <!-- This file will be automatically included in all projects because of its name -->
+  <PropertyGroup>
+    <NoWarn>
+      SA1309 <!-- Field '_<field>' should not begin with an underscore [Api] -->
+      SA1633 <!-- The file header is missing or not located at the top of the file. [Api] -->
+      SA1200 <!-- Using directive should appear within a namespace declaration [Api] -->
+      SA1600 <!-- Elements should be documented [Api] -->
+      SA1101 <!-- Prefix local calls with this [Api] -->
+    </NoWarn>
+  </PropertyGroup>
+
+</Project>
