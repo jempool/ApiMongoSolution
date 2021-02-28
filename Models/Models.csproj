@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <RootNamespace>Api.Models</RootNamespace>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 

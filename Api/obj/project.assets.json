@@ -88,6 +88,19 @@
         "runtime": {
           "bin/placeholder/Models.dll": {}
         }
+      },
+      "Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Services.dll": {}
+        }
       }
     }
   },
@@ -228,11 +241,17 @@
       "type": "project",
       "path": "../Models/Models.csproj",
       "msbuildProject": "../Models/Models.csproj"
+    },
+    "Services/1.0.0": {
+      "type": "project",
+      "path": "../Services/Services.csproj",
+      "msbuildProject": "../Services/Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
       "Models >= 1.0.0",
+      "Services >= 1.0.0",
       "StyleCop.Analyzers >= 1.1.118",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
@@ -264,6 +283,9 @@
           "projectReferences": {
             "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Models/Models.csproj": {
               "projectPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Models/Models.csproj"
+            },
+            "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Services/Services.csproj": {
+              "projectPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Services/Services.csproj"
             }
           }
         }

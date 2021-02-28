@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Api.Models;
+using Api.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -11,48 +11,54 @@ namespace Api.Controllers
     [Route("[controller]")]
     public class UsersController : ControllerBase
     {
-            private static readonly List<User> Users = new ()
-            {
-                new User(Guid.Parse("ab908249-7cf7-49cf-890e-d1c71cc08d59")) { Name = "Jem Suarez", Email = "jem@mail.com", Country = "COLOMBIA" },
-                new User(Guid.Parse("93491041-023f-45fe-b61b-461a086fc87b")) { Name = "Carlos Perez", Email = "carlos@mail.com", Country = "BOLIVIA" },
-                new User(Guid.Parse("4586afea-1167-4159-bd14-3cfb3db47bb4")) { Name = "Diana Sanchez", Email = "diana@mail.com", Country = "CHILE" },
-            };
+        private readonly ILogger<UsersController> _logger;
+        private readonly IUsersService _usersService;
 
-            private readonly ILogger<UsersController> _logger;
+        public UsersController(ILogger<UsersController> logger, IUsersService service)
+        {
+            _logger = logger;
+            _logger.LogInformation("Users Controller was created!");
+            _usersService = service;
+        }
 
-            public UsersController(ILogger<UsersController> logger)
+        [HttpGet]
+        public IEnumerable<User> GetAllUsers()
+        {
+            return _usersService.GetAllUsers();
+        }
+
+        [HttpPost]
+        public User CreateUser(User user)
+        {
+            var newUser = _usersService.CreateUser(user);
+            return newUser;
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<User> GetUserById(Guid id)
+        {
+            try
             {
-                _logger = logger;
+                return _usersService.GetUserById(id);
             }
-
-            [HttpGet]
-            public IEnumerable<User> GetAllUsers()
+            catch (NotFoundException ex)
             {
-                return Users;
+                return NotFound(ex.Message);
             }
+        }
 
-            [HttpGet("{id}")]
-            public User GetUserById(Guid id)
+        [HttpDelete("{id}")]
+        public ActionResult DeleteUser(Guid id)
+        {
+            try
             {
-                return Users.FirstOrDefault(user => user.Id == id);
+                _usersService.DeleteUser(id);
+                return NoContent();
             }
-
-            [HttpPost]
-            public User CreateUser(User user)
+            catch (NotFoundException)
             {
-                User newUser = new (Guid.NewGuid()) { Name = user.Name, Email = user.Email, Country = user.Country };
-                Users.Add(newUser);
-                return newUser;
+                return NotFound();
             }
-
-            [HttpDelete("{id}")]
-            public void DeleteUser(Guid id)
-            {
-                var userToDelete = Users.FirstOrDefault(user => user.Id == id);
-                if (userToDelete != null)
-                {
-                _ = Users.Remove(userToDelete);
-                }
-            }
+        }
     }
 }

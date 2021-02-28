@@ -28,6 +28,9 @@
             "projectReferences": {
               "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Models/Models.csproj": {
                 "projectPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Models/Models.csproj"
+              },
+              "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Services/Services.csproj": {
+                "projectPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Services/Services.csproj"
               }
             }
           }
@@ -97,6 +100,62 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/home/jim/dotnet/sdk/5.0.103/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Services/Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Services/Services.csproj",
+        "projectName": "Services",
+        "projectPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Services/Services.csproj",
+        "packagesPath": "/home/jim/.nuget/packages/",
+        "outputPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Services/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/jim/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Models/Models.csproj": {
+                "projectPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Models/Models.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
