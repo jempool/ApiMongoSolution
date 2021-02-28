@@ -36,7 +36,7 @@ namespace Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Idea> GetIdeaById(Guid id)
+        public ActionResult<Idea> GetIdeaById(string id)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace Api.Controllers
         }
 
         [HttpDelete("{id}")]
-        public ActionResult DeleteIdea(Guid id)
+        public ActionResult DeleteIdea(string id)
         {
             try
             {

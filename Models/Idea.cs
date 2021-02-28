@@ -4,12 +4,12 @@ namespace Api.Models
 {
     public class Idea
     {
-        public Idea(Guid id)
+        public Idea(string id)
         {
             this.Id = id;
         }
 
-        public Guid Id { get; }
+        public string Id { get; }
 
         public string Detail { get; set; }
 
@@ -17,9 +17,9 @@ namespace Api.Models
 
         public int AverageStars { get; set; }
 
-        public Guid ProposedBy { get; set; }
+        public string ProposedBy { get; set; }
 
-        public static Idea Clone(Idea source, Guid id)
+        public static Idea Clone(Idea source, string id)
         {
             return new Idea(id) { Detail = source.Detail, Comments = source.Comments, AverageStars = source.AverageStars, ProposedBy = source.ProposedBy };
         }

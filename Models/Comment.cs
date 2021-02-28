@@ -4,20 +4,20 @@ namespace Api.Models
 {
     public class Comment
     {
-        public Comment(Guid id)
+        public Comment(string id)
         {
             this.Id = id;
         }
 
-        public Guid Id { get; }
+        public string Id { get; }
 
         public string TheComment { get; set; }
 
         public int Stars { get; set; }
 
-        public Guid GivenBy { get; set; }
+        public string GivenBy { get; set; }
 
-        public static Comment Clone(Comment source, Guid id)
+        public static Comment Clone(Comment source, string id)
         {
             return new Comment(id) { TheComment = source.TheComment, Stars = source.Stars, GivenBy = source.GivenBy };
         }

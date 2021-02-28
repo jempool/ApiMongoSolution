@@ -36,7 +36,7 @@ namespace Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Comment> GetCommentById(Guid id)
+        public ActionResult<Comment> GetCommentById(string id)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace Api.Controllers
         }
 
         [HttpDelete("{id}")]
-        public ActionResult DeleteComment(Guid id)
+        public ActionResult DeleteComment(string id)
         {
             try
             {

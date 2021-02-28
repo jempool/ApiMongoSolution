@@ -26,6 +26,9 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
+              "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Data/Data.csproj": {
+                "projectPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Data/Data.csproj"
+              },
               "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Models/Models.csproj": {
                 "projectPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Models/Models.csproj"
               },
@@ -70,6 +73,68 @@
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
             },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/home/jim/dotnet/sdk/5.0.103/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Data/Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Data/Data.csproj",
+        "projectName": "Data",
+        "projectPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Data/Data.csproj",
+        "packagesPath": "/home/jim/.nuget/packages/",
+        "outputPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Data/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/jim/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Models/Models.csproj": {
+                "projectPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Models/Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "mongocsharpdriver": {
+              "target": "Package",
+              "version": "[2.11.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

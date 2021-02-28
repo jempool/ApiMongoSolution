@@ -35,7 +35,7 @@ namespace Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<User> GetUserById(Guid id)
+        public ActionResult<User> GetUserById(string id)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace Api.Controllers
         }
 
         [HttpDelete("{id}")]
-        public ActionResult DeleteUser(Guid id)
+        public ActionResult DeleteUser(string id)
         {
             try
             {

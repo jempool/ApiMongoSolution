@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using Api.Models;
 
-namespace Api.Services
+namespace Api.Data
 {   
-       public interface IIdeasService
+       public interface IIdeasRepository
     {
         Idea CreateIdea(Idea idea);
-        void DeleteIdea(string id);
+        void DeleteIdea(Guid id);
         IEnumerable<Idea> GetAllIdeas();
-        Idea GetIdeaById(string id);
+        Idea GetIdeaById(Guid id);
     }
 }

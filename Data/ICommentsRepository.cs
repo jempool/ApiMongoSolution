@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using Api.Models;
 
-namespace Api.Services
+namespace Api.Data
 {
-    public interface ICommentsService
+    public interface ICommentsRepository
     {
         Comment CreateComment(Comment comment);
-        void DeleteComment(string id);
+        void DeleteComment(Guid id);
         IEnumerable<Comment> GetAllComments();
-        Comment GetCommentById(string id);
+        Comment GetCommentById(Guid id);
     }
 }

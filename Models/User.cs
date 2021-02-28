@@ -4,12 +4,12 @@ namespace Api.Models
 {
     public class User
     {
-        public User(Guid id)
+        public User(string id)
         {
             this.Id = id;
         }
 
-        public Guid Id { get; }
+        public string Id { get; }
 
         public string Name { get; set; }
 
@@ -17,14 +17,9 @@ namespace Api.Models
 
         public string Country { get; set; }
 
-        public static User Clone(User source, Guid id)
+        public static User Clone(User source, string id)
         {
             return new User(id) { Name = source.Name, Email = source.Email, Country = source.Country };
-        }
-
-        public override int GetHashCode()
-        {
-            return this.Id.GetHashCode();
         }
     }
 }

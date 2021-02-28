@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+  <RootNamespace>Api.Data</RootNamespace>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../Models/Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="mongocsharpdriver" Version="2.11.6" />
+  </ItemGroup>
+
+</Project>
