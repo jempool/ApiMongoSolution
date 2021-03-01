@@ -1,4 +1,5 @@
-using System;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace Api.Models
 {
@@ -9,24 +10,25 @@ namespace Api.Models
             this.Id = id;
         }
 
-        public string Id { get; }
-
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get;  private set; }
+        
+        [BsonElement("detail")]
         public string Detail { get; set; }
 
+        [BsonElement("comments")]
         public int Comments { get; set; }
 
+        [BsonElement("averageStars")]
         public int AverageStars { get; set; }
 
+        [BsonElement("proposedBy")]
         public string ProposedBy { get; set; }
 
         public static Idea Clone(Idea source, string id)
         {
             return new Idea(id) { Detail = source.Detail, Comments = source.Comments, AverageStars = source.AverageStars, ProposedBy = source.ProposedBy };
-        }
-
-        public override int GetHashCode()
-        {
-            return this.Id.GetHashCode();
         }
     }
 }

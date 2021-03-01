@@ -1,51 +1,55 @@
-using System;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
-using System.Linq;
 using Api.Models;
+using Api.Services.Exceptions;
+using Api.Data;
 
 namespace Api.Services
 {
     public class UsersService : IUsersService
     {
-        private static readonly List<User> Users = new ()
+        private readonly IUsersRepository _repository;
+
+        private readonly ILogger<UsersService> _logger;
+
+        public UsersService(ILogger<UsersService> logger, IUsersRepository repo)
         {
-            new User("ab908249-7cf7-49cf-890e-d1c71cc08d59") { Name = "Jem Suarez", Email = "jem@mail.com", Country = "COLOMBIA" },
-            new User("93491041-023f-45fe-b61b-461a086fc87b") { Name = "Carlos Perez", Email = "carlos@mail.com", Country = "BOLIVIA" },
-            new User("4586afea-1167-4159-bd14-3cfb3db47bb4") { Name = "Diana Sanchez", Email = "diana@mail.com", Country = "CHILE" },
-        };
-        
+            _repository = repo;
+            _logger = logger;
+            _logger.LogInformation("Users Service was created");            
+        }
+
         public IEnumerable<User> GetAllUsers()
         {
-            return Users;
+            return _repository.GetAllUsers();
         }
 
         public User CreateUser(User user)
         {
-            User newUser = new ("Guid.NewGuid()") { Name = user.Name, Email = user.Email, Country = user.Country };
-            Users.Add(newUser);
+            var oldUser = _repository.FindUserByEmail(user.Email);
+            if (oldUser != null)
+            {
+                throw new AlreadyExistsException("User with the same email already exists");
+            }
+            var newUser = _repository.CreateUser(user);
             return newUser;
         }
         
         public User GetUserById(string id)
         {
-            var user = Users.FirstOrDefault(user => user.Id == id);
+            var user = _repository.GetUserById(id);
             if (user == null)
             {
-                throw new NotFoundException("Cannot find game");
+                throw new NotFoundException("Cannot find user");
             }
             return user;
         }
 
         public void DeleteUser(string id)
         {
-            var userToDelete = Users.FirstOrDefault(user => user.Id == id);
-            if (userToDelete != null)
+            if (!_repository.DeleteUser(id))
             {
-            _ = Users.Remove(userToDelete);
-            } 
-            else 
-            {
-                throw new NotFoundException("Cannot find game");
+                throw new NotFoundException("Cannot find user");
             }
         }
     }

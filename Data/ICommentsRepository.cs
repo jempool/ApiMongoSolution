@@ -7,8 +7,13 @@ namespace Api.Data
     public interface ICommentsRepository
     {
         Comment CreateComment(Comment comment);
-        void DeleteComment(Guid id);
+
+        bool DeleteComment(string id);
+
         IEnumerable<Comment> GetAllComments();
-        Comment GetCommentById(Guid id);
+
+        Comment GetCommentById(string id);
+
+        
     }
 }

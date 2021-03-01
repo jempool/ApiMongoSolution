@@ -1,4 +1,5 @@
-using System;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace Api.Models
 {
@@ -9,12 +10,17 @@ namespace Api.Models
             this.Id = id;
         }
 
-        public string Id { get; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; private set; }
 
+        [BsonElement("name")]
         public string Name { get; set; }
-
+        
+        [BsonElement("email")]
         public string Email { get; set; }
 
+        [BsonElement("country")]
         public string Country { get; set; }
 
         public static User Clone(User source, string id)

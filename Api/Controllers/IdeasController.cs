@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Api.Models;
 using Api.Services;
+using Api.Services.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 

@@ -46,11 +46,11 @@ D. Implement the following COUNTRY actions:
 - Get the list of existing users for a country (e.g. /countries/BOLIVIA/users => [{}])
 
 E. Some BIZ rules you may need to follow:
-- Validate the user's email on creation (ensure it's a EMAIL)
-- User's Email cannot be duplicated,
-- Validate the stars quantity (range 1-5)
-- Comment can only be posted to ideas that were not created by the same user.
-- Only a comment per user is allowed!
-- The country name can only be in CAPITAL LETTERS and is limited to the full set of Latin American countries!
+[ ] Validate the user's email on creation (ensure it's a EMAIL)
+[X] User's Email cannot be duplicated,
+[X] Validate the stars quantity (range 1-5)
+[ ] Comment can only be posted to ideas that were not created by the same user.
+[ ] Only a comment per user is allowed!
+[ ] The country name can only be in CAPITAL LETTERS and is limited to the full set of Latin American countries!
 
 F. Dockerize the application in one docker container

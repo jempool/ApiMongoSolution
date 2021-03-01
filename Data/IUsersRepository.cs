@@ -6,9 +6,14 @@ namespace Api.Data
 {   
     public interface IUsersRepository
     {
-        User CreateUser(User user);        
-        void DeleteUser(Guid id);
+        User CreateUser(User user);  
+
+        bool DeleteUser(string id);
+
         IEnumerable<User> GetAllUsers();
-        User GetUserById(Guid id);
+
+        User GetUserById(string id);
+
+        User FindUserByEmail(string email);
     }
 }
