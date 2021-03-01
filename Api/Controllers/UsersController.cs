@@ -29,10 +29,17 @@ namespace Api.Controllers
         }
 
         [HttpPost]
-        public User CreateUser(User user)
+        public ActionResult CreateUser(User user)
         {
-            var newUser = _usersService.CreateUser(user);
-            return newUser;
+            try
+            {
+                var newUser = _usersService.CreateUser(user);
+                return Ok(newUser);
+            }
+            catch (AlreadyExistsException ex)
+            {
+                return Conflict(new AppError(ex.Message));
+            }
         }
 
         [HttpGet("{id}")]
@@ -40,11 +47,11 @@ namespace Api.Controllers
         {
             try
             {
-                return _usersService.GetUserById(id);
+                return Ok(_usersService.GetUserById(id));
             }
             catch (NotFoundException ex)
             {
-                return NotFound(ex.Message);
+                return NotFound(new AppError(ex.Message));
             }
         }
 
@@ -56,9 +63,9 @@ namespace Api.Controllers
                 _usersService.DeleteUser(id);
                 return NoContent();
             }
-            catch (NotFoundException)
+            catch (NotFoundException ex)
             {
-                return NotFound();
+                return NotFound(new AppError(ex.Message));
             }
         }
     }

@@ -30,10 +30,17 @@ namespace Api.Controllers
         }
 
         [HttpPost]
-        public Comment CreateComment(Comment comment)
+        public ActionResult CreateComment(Comment comment)
         {
-            var newComment = _commentsService.CreateComment(comment);
-            return newComment;
+            try
+            {
+                var newComment = _commentsService.CreateComment(comment);
+                return Ok(newComment);
+            }
+            catch (AlreadyExistsException ex)
+            {
+                return Conflict(new AppError(ex.Message));
+            }
         }
 
         [HttpGet("{id}")]
@@ -41,11 +48,11 @@ namespace Api.Controllers
         {
             try
             {
-                return _commentsService.GetCommentById(id);
+                return Ok(_commentsService.GetCommentById(id));
             }
             catch (NotFoundException ex)
             {
-                return NotFound(ex.Message);
+                return NotFound(new AppError(ex.Message));
             }
         }
 
@@ -57,9 +64,9 @@ namespace Api.Controllers
                 _commentsService.DeleteComment(id);
                 return NoContent();
             }
-            catch (NotFoundException)
+            catch (NotFoundException ex)
             {
-                return NotFound();
+                return NotFound(new AppError(ex.Message));
             }
         }
     }

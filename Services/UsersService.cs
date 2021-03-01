@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Api.Models;
 using Api.Services.Exceptions;
 using Api.Data;
+using System.Linq;
 
 namespace Api.Services
 {
@@ -12,11 +13,18 @@ namespace Api.Services
 
         private readonly ILogger<UsersService> _logger;
 
+        private readonly List<string> Countries = new(new string[] 
+            { "BELIZE", "COSTA RICA", "EL SALVADOR", "GUATEMALA", "HONDURAS", "MEXICO", "NICARAGUA", "PANAMA", 
+              "ARGENTINA", "BOLIVIA", "BRAZIL", "CHILE", "COLOMBIA", "ECUADOR", "GUYANA", "PARAGUAY", "PERU", 
+              "URUGUAY", "VENEZUELA", "CUBA", "DOMINICAN REPUBLIC", "HAITI", "PUERTO RICO" }
+        );
+
         public UsersService(ILogger<UsersService> logger, IUsersRepository repo)
         {
             _repository = repo;
             _logger = logger;
             _logger.LogInformation("Users Service was created");            
+            // _countries = 
         }
 
         public IEnumerable<User> GetAllUsers()
@@ -24,8 +32,24 @@ namespace Api.Services
             return _repository.GetAllUsers();
         }
 
-        public User CreateUser(User user)
+        public User CreateUser(User user)        
         {
+            //Validating country
+            var match = Countries.FirstOrDefault(country => country.Contains(user.Country));
+            if(match == null)
+            {
+                throw new AlreadyExistsException("Is not a latin american country or is not capitalized");
+            }
+
+            try {
+                var addr = new System.Net.Mail.MailAddress(user.Email);
+                bool isValidEmail = addr.Address == user.Email;
+            }
+            catch {
+                throw new AlreadyExistsException("Invalid email address");
+            }
+
+            //Validating if Email exists
             var oldUser = _repository.FindUserByEmail(user.Email);
             if (oldUser != null)
             {

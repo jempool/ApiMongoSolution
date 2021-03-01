@@ -21,6 +21,7 @@ namespace Api.Data.Mongo
 
         Comment ICommentsRepository.CreateComment(Comment comment)
         {
+            var moreThanOneComment = _commentsCollection.Find<Comment>(Comment => (Comment.GivenBy == comment.GivenBy)).FirstOrDefault();
             _commentsCollection.InsertOne(comment);
             return comment;   
         }

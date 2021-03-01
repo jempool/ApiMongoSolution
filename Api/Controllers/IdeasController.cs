@@ -30,10 +30,17 @@ namespace Api.Controllers
         }
 
         [HttpPost]
-        public Idea CreateIdea(Idea idea)
+        public ActionResult CreateIdea(Idea idea)
         {
-            var newIdea = _ideasService.CreateIdea(idea);
-            return newIdea;
+            try
+            {
+                var newIdea = _ideasService.CreateIdea(idea);
+                return Ok(newIdea);
+            }
+            catch (AlreadyExistsException ex)
+            {
+                return Conflict(new AppError(ex.Message));
+            }
         }
 
         [HttpGet("{id}")]
@@ -41,11 +48,11 @@ namespace Api.Controllers
         {
             try
             {
-                return _ideasService.GetIdeaById(id);
+                return Ok(_ideasService.GetIdeaById(id));
             }
             catch (NotFoundException ex)
             {
-                return NotFound(ex.Message);
+                return NotFound(new AppError(ex.Message));
             }
         }
 
@@ -57,9 +64,9 @@ namespace Api.Controllers
                 _ideasService.DeleteIdea(id);
                 return NoContent();
             }
-            catch (NotFoundException)
+            catch (NotFoundException ex)
             {
-                return NotFound();
+                return NotFound(new AppError(ex.Message));
             }
         }
     }
