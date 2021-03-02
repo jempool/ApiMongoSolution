@@ -69,6 +69,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.osx-x64",
+              "version": "[5.0.3, 5.0.3]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -78,6 +84,11 @@
             }
           },
           "runtimeIdentifierGraphPath": "/home/jim/dotnet/sdk/5.0.103/RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "osx.10.11-x64": {
+          "#import": []
         }
       }
     },
@@ -141,6 +152,11 @@
           },
           "runtimeIdentifierGraphPath": "/home/jim/dotnet/sdk/5.0.103/RuntimeIdentifierGraph.json"
         }
+      },
+      "runtimes": {
+        "osx.10.11-x64": {
+          "#import": []
+        }
       }
     },
     "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Models/Models.csproj": {
@@ -198,6 +214,11 @@
             }
           },
           "runtimeIdentifierGraphPath": "/home/jim/dotnet/sdk/5.0.103/RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "osx.10.11-x64": {
+          "#import": []
         }
       }
     },
@@ -263,6 +284,11 @@
             }
           },
           "runtimeIdentifierGraphPath": "/home/jim/dotnet/sdk/5.0.103/RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "osx.10.11-x64": {
+          "#import": []
         }
       }
     }
