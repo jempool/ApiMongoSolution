@@ -49,8 +49,8 @@ E. Some BIZ rules you may need to follow:
 [X] Validate the user's email on creation (ensure it's a EMAIL)
 [X] User's Email cannot be duplicated,
 [X] Validate the stars quantity (range 1-5)
-[ ] Comment can only be posted to ideas that were not created by the same user.
-[ ] Only a comment per user is allowed!
+[X] Comment can only be posted to ideas that were not created by the same user.
+[X] Only a comment per user is allowed!
 [X] The country name can only be in CAPITAL LETTERS and is limited to the full set of Latin American countries!
 
 F. Dockerize the application in one docker container

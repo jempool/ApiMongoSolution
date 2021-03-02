@@ -23,6 +23,9 @@ namespace Api.Models
         [BsonElement("givenBy")]
         public string GivenBy { get; set; }
 
+        [BsonElement("givenTo")]
+        public string GivenTo { get; set; }
+
         public static Comment Clone(Comment source, string id)
         {
             return new Comment(id) { TheComment = source.TheComment, Stars = source.Stars, GivenBy = source.GivenBy };

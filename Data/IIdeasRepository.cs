@@ -13,5 +13,9 @@ namespace Api.Data
         IEnumerable<Idea> GetAllIdeas();
 
         Idea GetIdeaById(string id);
+
+        bool IncreaseNumberOfComments(string id);
+
+        bool UpdateAverageStars(string id, int newNumberOfStars);
     }
 }

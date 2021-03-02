@@ -8,6 +8,8 @@ namespace Api.Models
         public Idea(string id)
         {
             this.Id = id;
+            this.Comments = 0;
+            this.AverageStars = 0;
         }
 
         [BsonId]
@@ -18,10 +20,10 @@ namespace Api.Models
         public string Detail { get; set; }
 
         [BsonElement("comments")]
-        public int Comments { get; set; }
+        public int Comments { get; private set; }
 
         [BsonElement("averageStars")]
-        public int AverageStars { get; set; }
+        public int AverageStars { get; private set; }
 
         [BsonElement("proposedBy")]
         public string ProposedBy { get; set; }

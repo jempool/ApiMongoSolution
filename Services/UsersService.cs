@@ -9,7 +9,7 @@ namespace Api.Services
 {
     public class UsersService : IUsersService
     {
-        private readonly IUsersRepository _repository;
+        private readonly IUsersRepository _usersRepository;
 
         private readonly ILogger<UsersService> _logger;
 
@@ -19,17 +19,16 @@ namespace Api.Services
               "URUGUAY", "VENEZUELA", "CUBA", "DOMINICAN REPUBLIC", "HAITI", "PUERTO RICO" }
         );
 
-        public UsersService(ILogger<UsersService> logger, IUsersRepository repo)
+        public UsersService(ILogger<UsersService> logger, IUsersRepository usersRepository)
         {
-            _repository = repo;
+            _usersRepository = usersRepository;
             _logger = logger;
-            _logger.LogInformation("Users Service was created");            
-            // _countries = 
+            _logger.LogInformation("Users Service was created");
         }
 
         public IEnumerable<User> GetAllUsers()
         {
-            return _repository.GetAllUsers();
+            return _usersRepository.GetAllUsers();
         }
 
         public User CreateUser(User user)        
@@ -50,18 +49,18 @@ namespace Api.Services
             }
 
             //Validating if Email exists
-            var oldUser = _repository.FindUserByEmail(user.Email);
+            var oldUser = _usersRepository.FindUserByEmail(user.Email);
             if (oldUser != null)
             {
                 throw new AlreadyExistsException("User with the same email already exists");
             }
-            var newUser = _repository.CreateUser(user);
+            var newUser = _usersRepository.CreateUser(user);
             return newUser;
         }
         
         public User GetUserById(string id)
         {
-            var user = _repository.GetUserById(id);
+            var user = _usersRepository.GetUserById(id);
             if (user == null)
             {
                 throw new NotFoundException("Cannot find user");
@@ -71,7 +70,7 @@ namespace Api.Services
 
         public void DeleteUser(string id)
         {
-            if (!_repository.DeleteUser(id))
+            if (!_usersRepository.DeleteUser(id))
             {
                 throw new NotFoundException("Cannot find user");
             }

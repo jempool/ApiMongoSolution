@@ -39,5 +39,28 @@ namespace Api.Data.Mongo
         {
             return _ideasCollection.Find<Idea>(idea => (idea.Id == id)).FirstOrDefault();
         }
+
+        public bool IncreaseNumberOfComments(string id)
+        {
+            var idea = _ideasCollection.Find<Idea>(idea => (idea.Id == id)).FirstOrDefault();
+            
+            if(idea != null)
+            {
+                var updateOp = Builders<Idea>.Update.Set("comments", idea.Comments + 1);
+                var opResult = _ideasCollection.UpdateOne(i => i.Id == id, updateOp);
+                return (opResult.ModifiedCount == 1);
+            }
+            else 
+            {
+                return false;
+            }
+        }
+
+        public bool UpdateAverageStars(string id, int stars)
+        {
+            var updateOp = Builders<Idea>.Update.Set("averageStars", stars);
+            var opResult = _ideasCollection.UpdateOne(i => i.Id == id, updateOp);
+            return (opResult.ModifiedCount == 1);
+        }
     }
 }

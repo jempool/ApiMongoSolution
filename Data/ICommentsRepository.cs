@@ -14,6 +14,6 @@ namespace Api.Data
 
         Comment GetCommentById(string id);
 
-        
+        Comment HasThisUserAlreadyCommentedOnThisIdea(Comment comment);
     }
 }

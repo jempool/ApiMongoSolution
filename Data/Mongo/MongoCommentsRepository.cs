@@ -41,5 +41,10 @@ namespace Api.Data.Mongo
         {
              return _commentsCollection.Find<Comment>(comment => (comment.Id == id)).FirstOrDefault();
         }
+
+        Comment ICommentsRepository.HasThisUserAlreadyCommentedOnThisIdea(Comment comment)
+        {            
+            return _commentsCollection.Find<Comment>(Comment => (Comment.GivenBy == comment.GivenBy) && (Comment.GivenTo == comment.GivenTo) ).FirstOrDefault();
+        }
     }
 }
