@@ -10,5 +10,8 @@ namespace Api.Services
         void DeleteUser(string id);
         IEnumerable<User> GetAllUsers();
         User GetUserById(string id);
+        IEnumerable<User> GetUsersByCountry(string country);
+
+        IEnumerable<string> GetAllUniqueCountries();
     }
 }

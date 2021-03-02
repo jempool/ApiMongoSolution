@@ -42,8 +42,8 @@ C. Implement the following COMMENTS actions:
 [X] Get individual comment from an IDEA
 
 D. Implement the following COUNTRY actions:
-[ ] Get the list of all unique countries from current users
-[ ] Get the list of existing users for a country (e.g. /countries/BOLIVIA/users => [{}])
+[X] Get the list of all unique countries from current users
+[X] Get the list of existing users for a country (e.g. /countries/BOLIVIA/users => [{}])
 
 E. Some BIZ rules you may need to follow:
 [X] Validate the user's email on creation (ensure it's a EMAIL)
@@ -54,20 +54,4 @@ E. Some BIZ rules you may need to follow:
 [X] The country name can only be in CAPITAL LETTERS and is limited to the full set of Latin American countries!
 
 F. Dockerize the application in one docker container
-
-
-
-users: 
-            new User("ab908249-7cf7-49cf-890e-d1c71cc08d59") { Name = "Jem Suarez", Email = "jem@mail.com", Country = "COLOMBIA" },
-            new User("93491041-023f-45fe-b61b-461a086fc87b") { Name = "Carlos Perez", Email = "carlos@mail.com", Country = "BOLIVIA" },
-            new User("4586afea-1167-4159-bd14-3cfb3db47bb4") { Name = "Diana Sanchez", Email = "diana@mail.com", Country = "CHILE" },
-
-ideas: 
-			new Idea("602f616a-382c-446e-9d07-40436f356863") { Detail = "Increase salary!", Comments = 2, AverageStars = 3, ProposedBy = "ab908249-7cf7-49cf-890e-d1c71cc08d59" },
-			
-			new Idea("1eedb34c-dd36-446e-a55a-5c1e0980ba32") { Detail = "More vacations!", Comments = 3, AverageStars = 4, ProposedBy = "93491041-023f-45fe-b61b-461a086fc87b" },
-			
-			new Idea("4a5cbd01-4c99-4132-a758-8a06c1f310db") { Detail = "Less taxes!", Comments = 1, AverageStars = 2, ProposedBy = "4586afea-1167-4159-bd14-3cfb3db47bb4" },
-			
-comments:
-  {id: "9e9fd6c6-01ab-4d7c-99e4-db2fa32e7b7b", comment: "What a cliche", stars: 2, givenBy: "7e1ca8a4-8006-45d5-806e-cefcd7a838ea"}
+[ ]

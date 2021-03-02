@@ -22,7 +22,7 @@ namespace Api.Data.Mongo
 
         IEnumerable<User> IUsersRepository.GetAllUsers()
         {
-            return _usersCollection.Find<User>(user => true).ToList();            
+            return _usersCollection.Find<User>(user => true).ToList();
         }
 
         User IUsersRepository.CreateUser(User user)
@@ -45,6 +45,11 @@ namespace Api.Data.Mongo
         User IUsersRepository.FindUserByEmail(string email)
         {
             return _usersCollection.Find<User>(user => (user.Email == email)).FirstOrDefault();
+        }
+
+        IEnumerable<User> IUsersRepository.GetUsersByCountry(string country)
+        {
+            return _usersCollection.Find<User>(user => (user.Country == country)).ToList();            
         }
     }
 }

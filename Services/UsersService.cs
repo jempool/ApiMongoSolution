@@ -75,5 +75,30 @@ namespace Api.Services
                 throw new NotFoundException("Cannot find user");
             }
         }
+
+        IEnumerable<User> IUsersService.GetUsersByCountry(string country)
+        {
+            var users = _usersRepository.GetUsersByCountry(country);
+            if (users == null)
+            {
+                throw new NotFoundException("Cannot find user");
+            }
+            return users;
+        }
+
+        IEnumerable<string> IUsersService.GetAllUniqueCountries()
+        {
+        var users = _usersRepository.GetAllUsers();
+        List<string> countries = new();
+
+        foreach (User user in users)
+        {
+            if(_usersRepository.GetUsersByCountry(user.Country).Count() == 1)
+            {
+                countries.Add(user.Country);
+            }
+        }
+            return countries;
+        }
     }
 }

@@ -68,5 +68,31 @@ namespace Api.Controllers
                 return NotFound(new AppError(ex.Message));
             }
         }
+
+        [HttpGet("/Users/Countries/{country}")]
+        public ActionResult<IEnumerable<User>> GetUsersByCountry(string country)
+        {
+            try
+            {
+                return Ok(_usersService.GetUsersByCountry(country));
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(new AppError(ex.Message));
+            }
+        }
+
+        [HttpGet("/Users/Countries")]
+        public ActionResult GetAllUniqueCountries()
+        {
+            try
+            {
+                return Ok(_usersService.GetAllUniqueCountries());
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(new AppError(ex.Message));
+            }
+        }
     }
 }
