@@ -40,6 +40,7 @@ namespace Api.Data.Mongo
             return _ideasCollection.Find<Idea>(idea => (idea.Id == id)).FirstOrDefault();
         }
 
+        // not only "increase" but "update"
         public bool IncreaseNumberOfComments(string id)
         {
             var idea = _ideasCollection.Find<Idea>(idea => (idea.Id == id)).FirstOrDefault();
@@ -56,9 +57,9 @@ namespace Api.Data.Mongo
             }
         }
 
-        public bool UpdateAverageStars(string id, int stars)
+        public bool UpdateAverageStars(string id, long newAverageOfStars)
         {
-            var updateOp = Builders<Idea>.Update.Set("averageStars", stars);
+            var updateOp = Builders<Idea>.Update.Set("averageStars", newAverageOfStars);
             var opResult = _ideasCollection.UpdateOne(i => i.Id == id, updateOp);
             return (opResult.ModifiedCount == 1);
         }

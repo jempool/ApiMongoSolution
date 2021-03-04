@@ -23,7 +23,7 @@ namespace Api.Models
         public int Comments { get; private set; }
 
         [BsonElement("averageStars")]
-        public int AverageStars { get; private set; }
+        public long AverageStars { get; private set; }
 
         [BsonElement("proposedBy")]
         public string ProposedBy { get; set; }

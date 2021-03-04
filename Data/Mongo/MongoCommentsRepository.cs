@@ -46,5 +46,20 @@ namespace Api.Data.Mongo
         {            
             return _commentsCollection.Find<Comment>(Comment => (Comment.GivenBy == comment.GivenBy) && (Comment.GivenTo == comment.GivenTo) ).FirstOrDefault();
         }
+
+        long ICommentsRepository.GetNewAverageRegardingTheCurrentComment(string ideaId, int currentStars)
+        {
+            var comments = _commentsCollection.Find<Comment>(comment => comment.GivenTo == ideaId).ToList();
+            var totalNumberOfComments = comments.Count;
+            long totalNumberOfStars = 0;
+            foreach (var comment in comments)
+            {
+                totalNumberOfStars += comment.Stars;
+            }
+            // adding the current number of stars and the current comment
+            var newAverage = (totalNumberOfStars + currentStars) / (totalNumberOfComments + 1);
+
+            return newAverage;
+        }
     }
 }

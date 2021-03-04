@@ -55,14 +55,15 @@ namespace Api.Services
                 }
             }
 
-            // Update the average of stars
-            if(idea != null){
-                int newAverageOfStars = (idea.AverageStars + comment.Stars) / 2;
+            // Update the average of stars ---------------------------------------------------------------- 
+            if(idea != null){                                
+                long newAverageOfStars = _commentsRepository.GetNewAverageRegardingTheCurrentComment(idea.Id, comment.Stars);
                 if (!_ideasRepository.UpdateAverageStars(idea.Id, newAverageOfStars))
                 {
                     throw new NotFoundException("Cannot find idea");
                 }
             }
+            // --------------------------------------------------------------------------------------------
             
             newComment = _commentsRepository.CreateComment(comment);
             return newComment;

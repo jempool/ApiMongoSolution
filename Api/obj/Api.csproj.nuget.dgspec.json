@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Api/Api.csproj": {}
+    "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw.02/Api/Api.csproj": {}
   },
   "projects": {
-    "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Api/Api.csproj": {
+    "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw.02/Api/Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Api/Api.csproj",
+        "projectUniqueName": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw.02/Api/Api.csproj",
         "projectName": "Api",
-        "projectPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Api/Api.csproj",
+        "projectPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw.02/Api/Api.csproj",
         "packagesPath": "/home/jim/.nuget/packages/",
-        "outputPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Api/obj/",
+        "outputPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw.02/Api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/jim/.nuget/NuGet/NuGet.Config"
@@ -26,14 +26,14 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Data/Data.csproj": {
-                "projectPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Data/Data.csproj"
+              "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw.02/Data/Data.csproj": {
+                "projectPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw.02/Data/Data.csproj"
               },
-              "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Models/Models.csproj": {
-                "projectPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Models/Models.csproj"
+              "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw.02/Models/Models.csproj": {
+                "projectPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw.02/Models/Models.csproj"
               },
-              "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Services/Services.csproj": {
-                "projectPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Services/Services.csproj"
+              "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw.02/Services/Services.csproj": {
+                "projectPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw.02/Services/Services.csproj"
               }
             }
           }
@@ -69,12 +69,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Host.osx-x64",
-              "version": "[5.0.3, 5.0.3]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -85,21 +79,16 @@
           },
           "runtimeIdentifierGraphPath": "/home/jim/dotnet/sdk/5.0.103/RuntimeIdentifierGraph.json"
         }
-      },
-      "runtimes": {
-        "osx.10.11-x64": {
-          "#import": []
-        }
       }
     },
-    "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Data/Data.csproj": {
+    "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw.02/Data/Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Data/Data.csproj",
+        "projectUniqueName": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw.02/Data/Data.csproj",
         "projectName": "Data",
-        "projectPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Data/Data.csproj",
+        "projectPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw.02/Data/Data.csproj",
         "packagesPath": "/home/jim/.nuget/packages/",
-        "outputPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Data/obj/",
+        "outputPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw.02/Data/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/jim/.nuget/NuGet/NuGet.Config"
@@ -114,8 +103,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Models/Models.csproj": {
-                "projectPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Models/Models.csproj"
+              "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw.02/Models/Models.csproj": {
+                "projectPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw.02/Models/Models.csproj"
               }
             }
           }
@@ -152,21 +141,16 @@
           },
           "runtimeIdentifierGraphPath": "/home/jim/dotnet/sdk/5.0.103/RuntimeIdentifierGraph.json"
         }
-      },
-      "runtimes": {
-        "osx.10.11-x64": {
-          "#import": []
-        }
       }
     },
-    "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Models/Models.csproj": {
+    "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw.02/Models/Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Models/Models.csproj",
+        "projectUniqueName": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw.02/Models/Models.csproj",
         "projectName": "Models",
-        "projectPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Models/Models.csproj",
+        "projectPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw.02/Models/Models.csproj",
         "packagesPath": "/home/jim/.nuget/packages/",
-        "outputPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Models/obj/",
+        "outputPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw.02/Models/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/jim/.nuget/NuGet/NuGet.Config"
@@ -215,21 +199,16 @@
           },
           "runtimeIdentifierGraphPath": "/home/jim/dotnet/sdk/5.0.103/RuntimeIdentifierGraph.json"
         }
-      },
-      "runtimes": {
-        "osx.10.11-x64": {
-          "#import": []
-        }
       }
     },
-    "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Services/Services.csproj": {
+    "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw.02/Services/Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Services/Services.csproj",
+        "projectUniqueName": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw.02/Services/Services.csproj",
         "projectName": "Services",
-        "projectPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Services/Services.csproj",
+        "projectPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw.02/Services/Services.csproj",
         "packagesPath": "/home/jim/.nuget/packages/",
-        "outputPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Services/obj/",
+        "outputPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw.02/Services/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/jim/.nuget/NuGet/NuGet.Config"
@@ -244,11 +223,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Data/Data.csproj": {
-                "projectPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Data/Data.csproj"
+              "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw.02/Data/Data.csproj": {
+                "projectPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw.02/Data/Data.csproj"
               },
-              "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Models/Models.csproj": {
-                "projectPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw/Models/Models.csproj"
+              "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw.02/Models/Models.csproj": {
+                "projectPath": "/home/jim/Escritorio/Jalasoft Bootcamp/Back-end/j.suarez.hw.02/Models/Models.csproj"
               }
             }
           }
@@ -284,11 +263,6 @@
             }
           },
           "runtimeIdentifierGraphPath": "/home/jim/dotnet/sdk/5.0.103/RuntimeIdentifierGraph.json"
-        }
-      },
-      "runtimes": {
-        "osx.10.11-x64": {
-          "#import": []
         }
       }
     }

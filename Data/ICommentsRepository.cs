@@ -15,5 +15,8 @@ namespace Api.Data
         Comment GetCommentById(string id);
 
         Comment HasThisUserAlreadyCommentedOnThisIdea(Comment comment);
+        
+        long GetNewAverageRegardingTheCurrentComment(string ideaId, int currentStars);        
+
     }
 }

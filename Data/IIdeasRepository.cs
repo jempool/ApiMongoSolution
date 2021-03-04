@@ -16,6 +16,6 @@ namespace Api.Data
 
         bool IncreaseNumberOfComments(string id);
 
-        bool UpdateAverageStars(string id, int newNumberOfStars);
+        bool UpdateAverageStars(string id, long newAverageOfStars);
     }
 }
