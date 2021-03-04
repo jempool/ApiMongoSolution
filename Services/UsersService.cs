@@ -88,16 +88,21 @@ namespace Api.Services
 
         IEnumerable<string> IUsersService.GetAllUniqueCountries()
         {
-        var users = _usersRepository.GetAllUsers();
-        List<string> countries = new();
+        // var users = _usersRepository.GetAllUsers();
+        var countries = _usersRepository.GetAllUniqueCountries().Distinct();
 
-        foreach (User user in users)
+        // foreach (User user in users)
+        // {
+        //     if(_usersRepository.GetUsersByCountry(user.Country).Count() == 1)
+        //     {
+        //         countries.Add(user.Country);
+        //     }
+        // }
+        if (countries == null)
         {
-            if(_usersRepository.GetUsersByCountry(user.Country).Count() == 1)
-            {
-                countries.Add(user.Country);
-            }
+            throw new NotFoundException("Cannot find countries");
         }
+
             return countries;
         }
     }

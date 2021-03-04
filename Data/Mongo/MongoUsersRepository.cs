@@ -49,7 +49,19 @@ namespace Api.Data.Mongo
 
         IEnumerable<User> IUsersRepository.GetUsersByCountry(string country)
         {
-            return _usersCollection.Find<User>(user => (user.Country == country)).ToList();            
+            return _usersCollection.Find<User>(user => (user.Country == country)).ToList();
+        }
+
+        IEnumerable<string> IUsersRepository.GetAllUniqueCountries()
+        {
+            var usersForUniqueCountries = _usersCollection.Find<User>(user => true).ToList();                    
+            var uniqueCountries = new List<string>();
+            foreach (var user in usersForUniqueCountries)
+            {
+                uniqueCountries.Add(user.Country);
+            }
+
+            return uniqueCountries;
         }
     }
 }

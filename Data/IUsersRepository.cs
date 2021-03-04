@@ -17,5 +17,7 @@ namespace Api.Data
         User FindUserByEmail(string email);
 
         IEnumerable<User> GetUsersByCountry(string country);
+
+        IEnumerable<string> GetAllUniqueCountries();
     }
 }
