@@ -8,11 +8,11 @@ namespace Api.Data
     {
         User CreateUser(User user);  
 
-        bool DeleteUser(string id);
+        bool DeleteUser(string userId);
 
         IEnumerable<User> GetAllUsers();
 
-        User GetUserById(string id);
+        User GetUserById(string userId);
 
         User FindUserByEmail(string email);
 

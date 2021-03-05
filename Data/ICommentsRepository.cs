@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Api.Models;
 
@@ -8,15 +7,18 @@ namespace Api.Data
     {
         Comment CreateComment(Comment comment);
 
-        bool DeleteComment(string id);
+        bool DeleteComment(string ideaId);
 
         IEnumerable<Comment> GetAllComments();
 
-        Comment GetCommentById(string id);
-
-        Comment HasThisUserAlreadyCommentedOnThisIdea(Comment comment);
+        Comment GetCommentById(string ideaId);
         
-        long GetNewAverageRegardingTheCurrentComment(string ideaId, int currentStars);        
+        long GetNewAverageRegardingTheCurrentComment(string ideaId, int currentStars);
+                         
+        Comment GetCommentGivenAnUserAndAnIdea(string userId, string ideaId);
 
+        IEnumerable<Comment> FindCommentsByIdeaId(string ideaId);
+
+        Comment FindCommentByIdeaIdAndCommentId(string ideaId, string commentId);
     }
 }

@@ -33,8 +33,8 @@ namespace Api.Services
             {
                 throw new AlreadyExistsException("The valid star range is between 1 and 5");
             }
-            // Validating that it's the only comment for the idea
-            var newComment = _commentsRepository.HasThisUserAlreadyCommentedOnThisIdea(comment);
+            // Validating that it's the only comment for the idea            
+            var newComment = _commentsRepository.GetCommentGivenAnUserAndAnIdea(comment.GivenBy, comment.GivenTo);
             if(newComment != null){
                 throw new AlreadyExistsException("This user has already commented on this idea");
             }
@@ -69,9 +69,9 @@ namespace Api.Services
             return newComment;
         }
         
-        Comment ICommentsService.GetCommentById(string id)
+        Comment ICommentsService.GetCommentById(string ideaId)
         {
-            var comment = _commentsRepository.GetCommentById(id);
+            var comment = _commentsRepository.GetCommentById(ideaId);
             if (comment == null)
             {
                 throw new NotFoundException("Cannot find comment");
@@ -79,12 +79,45 @@ namespace Api.Services
             return comment;
         }
 
-        void ICommentsService.DeleteComment(string id)
+        void ICommentsService.DeleteComment(string ideaId)
         {
-            if (!_commentsRepository.DeleteComment(id))
+            if (!_commentsRepository.DeleteComment(ideaId))
             {
                 throw new NotFoundException("Cannot find comment");
             }
+        }
+
+        Comment ICommentsService.GetCommentGivenAnUserAndAnIdea(string userId, string ideaId)
+        {
+            var comment = _commentsRepository.GetCommentGivenAnUserAndAnIdea(userId, ideaId);
+            if (comment == null)
+            {
+                throw new NotFoundException("Cannot find comment");
+            }
+            return comment;
+        }
+
+        IEnumerable<Comment> ICommentsService.FindCommentsByIdeaId(string ideaId)
+        {
+            var comments = _commentsRepository.FindCommentsByIdeaId(ideaId);
+            if (comments == null)
+            {
+                throw new NotFoundException("Cannot find comments");
+            }
+            
+            return comments;
+        }
+
+
+        Comment ICommentsService.FindCommentByIdeaIdAndCommentId(string ideaId, string commentId)
+        {
+            var comment = _commentsRepository.FindCommentByIdeaIdAndCommentId(ideaId, commentId);
+            if (comment == null)
+            {
+                throw new NotFoundException("Cannot find comments");
+            }
+            
+            return comment;
         }
     }
 }

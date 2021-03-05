@@ -8,14 +8,16 @@ namespace Api.Data
     {
         Idea CreateIdea(Idea idea);
 
-        bool DeleteIdea(string id);
+        bool DeleteIdea(string ideaId);
 
         IEnumerable<Idea> GetAllIdeas();
 
-        Idea GetIdeaById(string id);
+        Idea GetIdeaById(string ideaId);
 
-        bool IncreaseNumberOfComments(string id);
+        bool IncreaseNumberOfComments(string ideaId);
 
-        bool UpdateAverageStars(string id, long newAverageOfStars);
+        bool UpdateAverageStars(string ideaId, long newAverageOfStars);
+
+        IEnumerable<Idea> GetAllIdeasOfAUser(string userId);        
     }
 }

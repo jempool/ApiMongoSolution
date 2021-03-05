@@ -1,10 +1,7 @@
-using System;
 using System.Collections.Generic;
 using Api.Models;
 using Api.Config;
-using MongoDB.Bson;
 using MongoDB.Driver;
-using MongoDB.Driver.Builders;
 
 
 namespace Api.Data.Mongo

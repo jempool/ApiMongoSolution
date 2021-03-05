@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Api.Models;
 using Api.Services.Exceptions;
 using Api.Data;
-using System.Linq;
 
 namespace Api.Services
 {
@@ -11,12 +10,15 @@ namespace Api.Services
     {
         private readonly IIdeasRepository _ideasRepository;
 
+        private readonly ICommentsRepository _commentsRepository;
+
         private readonly ILogger<IdeasService> _logger;
-        public IdeasService(ILogger<IdeasService> logger, IIdeasRepository ideasRepository)
+        public IdeasService(ILogger<IdeasService> logger, IIdeasRepository ideasRepository, ICommentsRepository commentsRepository)
         {
-            _ideasRepository = ideasRepository;
             _logger = logger;
             _logger.LogInformation("Ideas Service was created");
+            _ideasRepository = ideasRepository;
+            _commentsRepository = commentsRepository;
         }
 
         IEnumerable<Idea> IIdeasService.GetAllIdeas()
@@ -30,9 +32,9 @@ namespace Api.Services
             return newIdea;
         }
 
-        Idea IIdeasService.GetIdeaById(string id)
+        Idea IIdeasService.GetIdeaById(string ideasId)
         {            
-            var idea = _ideasRepository.GetIdeaById(id);
+            var idea = _ideasRepository.GetIdeaById(ideasId);
             if (idea == null)
             {
                 throw new NotFoundException("Cannot find idea");
@@ -40,12 +42,38 @@ namespace Api.Services
             return idea;
         }
 
-        void IIdeasService.DeleteIdea(string id)
+        void IIdeasService.DeleteIdea(string ideaId)
         {
-            if (!_ideasRepository.DeleteIdea(id))
+            if (!_ideasRepository.DeleteIdea(ideaId))
             {
                 throw new NotFoundException("Cannot find idea");
             }
+        }
+
+        IEnumerable<Idea> IIdeasService.GetAllIdeasOfAUser(string userId)
+        {
+            var ideas = _ideasRepository.GetAllIdeasOfAUser(userId);
+            if (ideas == null)
+            {
+                throw new NotFoundException("Cannot find user");
+            }
+            return ideas;
+        }
+
+        Idea IIdeasService.GetIdeaByCommentId(string commentId)
+        {
+            var comment = _commentsRepository.GetCommentById(commentId);
+            if (comment == null)
+            {
+                throw new NotFoundException("Cannot find comment of the idea");
+            }
+
+            var idea = _ideasRepository.GetIdeaById(comment.GivenTo);
+            if (idea == null)
+            {
+                throw new NotFoundException("Cannot find idea");
+            }
+            return idea;
         }
     }
 }

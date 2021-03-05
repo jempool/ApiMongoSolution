@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Api.Models;
 using Api.Services;
@@ -16,11 +15,17 @@ namespace Api.Controllers
 
         private readonly IIdeasService _ideasService;
 
-        public IdeasController(ILogger<IdeasController> logger, IIdeasService service)
+        private readonly IUsersService _usersService;
+
+        private readonly ICommentsService _commentsServices;
+
+        public IdeasController(ILogger<IdeasController> logger, IIdeasService ideasService, IUsersService usersService, ICommentsService commentsServices)
         {
             _logger = logger;
             _logger.LogInformation("Ideas Controller was created!");
-            _ideasService = service;
+            _ideasService = ideasService;
+            _usersService = usersService;
+            _commentsServices = commentsServices;
         }
 
         [HttpGet]
@@ -30,11 +35,11 @@ namespace Api.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateIdea(Idea idea)
+        public ActionResult CreateIdea(Idea ideaId)
         {
             try
             {
-                var newIdea = _ideasService.CreateIdea(idea);
+                var newIdea = _ideasService.CreateIdea(ideaId);
                 return Ok(newIdea);
             }
             catch (AlreadyExistsException ex)
@@ -43,12 +48,12 @@ namespace Api.Controllers
             }
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<Idea> GetIdeaById(string id)
+        [HttpGet("{ideaId}")]
+        public ActionResult<Idea> GetIdeaById(string ideaId)
         {
             try
             {
-                return Ok(_ideasService.GetIdeaById(id));
+                return Ok(_ideasService.GetIdeaById(ideaId));
             }
             catch (NotFoundException ex)
             {
@@ -56,12 +61,51 @@ namespace Api.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
-        public ActionResult DeleteIdea(string id)
+        [HttpGet("{ideaId}/Users")]
+        public ActionResult<User> FindUserByIdeaId(string ideaId)
         {
             try
             {
-                _ideasService.DeleteIdea(id);
+                return Ok(_usersService.FindUserByIdeaId(ideaId));
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(new AppError(ex.Message));
+            }
+        }
+
+        [HttpGet("{ideaId}/Comments")]
+        public ActionResult<Comment> FindCommentsByIdeaId(string ideaId)
+        {
+            try
+            {
+                return Ok(_commentsServices.FindCommentsByIdeaId(ideaId));
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(new AppError(ex.Message));
+            }
+        }
+
+        [HttpGet("{ideaId}/Comments/{commentId}")]
+        public ActionResult<Comment> FindCommentByIdeaIdAndCommentId(string ideaId, string commentId)
+        {
+            try
+            {
+                return Ok(_commentsServices.FindCommentByIdeaIdAndCommentId(ideaId, commentId));
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(new AppError(ex.Message));
+            }
+        }
+
+        [HttpDelete("{ideaId}")]
+        public ActionResult DeleteIdea(string ideaId)
+        {
+            try
+            {
+                _ideasService.DeleteIdea(ideaId);
                 return NoContent();
             }
             catch (NotFoundException ex)

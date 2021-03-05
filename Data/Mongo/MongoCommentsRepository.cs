@@ -1,10 +1,7 @@
-using System;
 using System.Collections.Generic;
 using Api.Models;
 using Api.Config;
-using MongoDB.Bson;
 using MongoDB.Driver;
-using MongoDB.Driver.Builders;
 
 namespace Api.Data.Mongo
 {
@@ -42,11 +39,6 @@ namespace Api.Data.Mongo
              return _commentsCollection.Find<Comment>(comment => (comment.Id == id)).FirstOrDefault();
         }
 
-        Comment ICommentsRepository.HasThisUserAlreadyCommentedOnThisIdea(Comment comment)
-        {            
-            return _commentsCollection.Find<Comment>(Comment => (Comment.GivenBy == comment.GivenBy) && (Comment.GivenTo == comment.GivenTo) ).FirstOrDefault();
-        }
-
         long ICommentsRepository.GetNewAverageRegardingTheCurrentComment(string ideaId, int currentStars)
         {
             var comments = _commentsCollection.Find<Comment>(comment => comment.GivenTo == ideaId).ToList();
@@ -60,6 +52,21 @@ namespace Api.Data.Mongo
             var newAverage = (totalNumberOfStars + currentStars) / (totalNumberOfComments + 1);
 
             return newAverage;
+        }
+
+        Comment ICommentsRepository.GetCommentGivenAnUserAndAnIdea(string userId, string ideaId)
+        {
+            return _commentsCollection.Find<Comment>(Comment => (Comment.GivenBy == userId) && (Comment.GivenTo == ideaId) ).FirstOrDefault();
+        }
+
+        IEnumerable<Comment> ICommentsRepository.FindCommentsByIdeaId(string ideaId)
+        {
+            return _commentsCollection.Find<Comment>(Comment => (Comment.GivenTo == ideaId)).ToList();
+        }
+
+        Comment ICommentsRepository.FindCommentByIdeaIdAndCommentId(string ideaId, string commentId)
+        {
+             return _commentsCollection.Find<Comment>(Comment => (Comment.GivenTo == ideaId) && (Comment.Id == commentId) ).FirstOrDefault();
         }
     }
 }

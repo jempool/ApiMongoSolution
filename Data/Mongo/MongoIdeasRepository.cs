@@ -1,9 +1,7 @@
 using System.Collections.Generic;
 using Api.Config;
 using Api.Models;
-using MongoDB.Bson;
 using MongoDB.Driver;
-using MongoDB.Driver.Builders;
 
 namespace Api.Data.Mongo
 {
@@ -62,6 +60,12 @@ namespace Api.Data.Mongo
             var updateOp = Builders<Idea>.Update.Set("averageStars", newAverageOfStars);
             var opResult = _ideasCollection.UpdateOne(i => i.Id == id, updateOp);
             return (opResult.ModifiedCount == 1);
+        }
+
+        IEnumerable<Idea> IIdeasRepository.GetAllIdeasOfAUser(string userId)
+        {
+            var ideas = _ideasCollection.Find<Idea>(idea => idea.ProposedBy == userId).ToList();
+            return ideas;
         }
     }
 }

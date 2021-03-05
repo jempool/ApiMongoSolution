@@ -9,9 +9,12 @@ namespace Api.Services
 {
     public class UsersService : IUsersService
     {
+        private readonly ILogger<UsersService> _logger;
         private readonly IUsersRepository _usersRepository;
 
-        private readonly ILogger<UsersService> _logger;
+        private readonly IIdeasRepository _ideasRepository;
+
+        private readonly ICommentsRepository _commentsRepository;
 
         private readonly List<string> Countries = new(new string[] 
             { "BELIZE", "COSTA RICA", "EL SALVADOR", "GUATEMALA", "HONDURAS", "MEXICO", "NICARAGUA", "PANAMA", 
@@ -19,11 +22,13 @@ namespace Api.Services
               "URUGUAY", "VENEZUELA", "CUBA", "DOMINICAN REPUBLIC", "HAITI", "PUERTO RICO" }
         );
 
-        public UsersService(ILogger<UsersService> logger, IUsersRepository usersRepository)
+        public UsersService(ILogger<UsersService> logger, IUsersRepository usersRepository, IIdeasRepository ideasRepository, ICommentsRepository commentsRepository)
         {
-            _usersRepository = usersRepository;
             _logger = logger;
-            _logger.LogInformation("Users Service was created");
+            _logger.LogInformation("Users Service was created");            
+            _usersRepository = usersRepository;
+            _ideasRepository = ideasRepository;
+            _commentsRepository = commentsRepository;
         }
 
         public IEnumerable<User> GetAllUsers()
@@ -58,9 +63,9 @@ namespace Api.Services
             return newUser;
         }
         
-        public User GetUserById(string id)
+        public User GetUserById(string userId)
         {
-            var user = _usersRepository.GetUserById(id);
+            var user = _usersRepository.GetUserById(userId);
             if (user == null)
             {
                 throw new NotFoundException("Cannot find user");
@@ -68,9 +73,9 @@ namespace Api.Services
             return user;
         }
 
-        public void DeleteUser(string id)
+        public void DeleteUser(string userId)
         {
-            if (!_usersRepository.DeleteUser(id))
+            if (!_usersRepository.DeleteUser(userId))
             {
                 throw new NotFoundException("Cannot find user");
             }
@@ -88,22 +93,47 @@ namespace Api.Services
 
         IEnumerable<string> IUsersService.GetAllUniqueCountries()
         {
-        // var users = _usersRepository.GetAllUsers();
-        var countries = _usersRepository.GetAllUniqueCountries().Distinct();
-
-        // foreach (User user in users)
-        // {
-        //     if(_usersRepository.GetUsersByCountry(user.Country).Count() == 1)
-        //     {
-        //         countries.Add(user.Country);
-        //     }
-        // }
-        if (countries == null)
-        {
-            throw new NotFoundException("Cannot find countries");
+            var countries = _usersRepository.GetAllUniqueCountries().Distinct();        
+            if (countries == null)
+            {
+                throw new NotFoundException("Cannot find countries");
+            }
+            
+            return countries;
         }
 
-            return countries;
+        User IUsersService.FindUserByIdeaId(string ideaId)
+        {
+            var idea = _ideasRepository.GetIdeaById(ideaId);
+            if (idea == null)
+            {
+                throw new NotFoundException("Cannot find the idea proposed by the user");
+            }
+                        
+            var user = _usersRepository.GetUserById(idea.ProposedBy);
+            if (user == null)
+            {
+                throw new NotFoundException("Cannot find user");
+            }
+
+            return user;
+        }
+
+        User IUsersService.GetUserByCommentId(string commentId)
+        {
+            var comment = _commentsRepository.GetCommentById(commentId);
+            if (comment == null)
+            {
+                throw new NotFoundException("Cannot find comment of the user");
+            }
+
+            var user = _usersRepository.GetUserById(comment.GivenBy);
+            if (user == null)
+            {
+                throw new NotFoundException("Cannot find user for this comment");
+            }
+
+            return user;
         }
     }
 }

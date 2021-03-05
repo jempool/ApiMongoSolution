@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Api.Models;
 using Api.Services;
@@ -14,12 +13,17 @@ namespace Api.Controllers
     {
         private readonly ILogger<UsersController> _logger;
         private readonly IUsersService _usersService;
+        private readonly IIdeasService _ideasService;
 
-        public UsersController(ILogger<UsersController> logger, IUsersService service)
+        private readonly ICommentsService _commentsService;
+
+        public UsersController(ILogger<UsersController> logger, IUsersService userService, IIdeasService ideasService, ICommentsService commentsService)
         {
             _logger = logger;
             _logger.LogInformation("Users Controller was created!");
-            _usersService = service;
+            _usersService = userService;
+            _ideasService = ideasService;
+            _commentsService = commentsService;
         }
 
         [HttpGet]
@@ -42,12 +46,12 @@ namespace Api.Controllers
             }
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<User> GetUserById(string id)
+        [HttpGet("{userId}")]
+        public ActionResult<User> GetUserById(string userId)
         {
             try
             {
-                return Ok(_usersService.GetUserById(id));
+                return Ok(_usersService.GetUserById(userId));
             }
             catch (NotFoundException ex)
             {
@@ -55,12 +59,38 @@ namespace Api.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
-        public ActionResult DeleteUser(string id)
+        [HttpGet("{userId}/Ideas")]
+        public ActionResult<User> GetAllIdeasOfAUser(string userId)
         {
             try
             {
-                _usersService.DeleteUser(id);
+                return Ok(_ideasService.GetAllIdeasOfAUser(userId));
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(new AppError(ex.Message));
+            }
+        }
+
+        [HttpGet("{userId}/Ideas/{ideaId}/Comments")]
+        public ActionResult<Comment> GetCommentGivenAnUserAndAnIdea(string userId, string ideaId)
+        {
+            try
+            {
+                return Ok(_commentsService.GetCommentGivenAnUserAndAnIdea(userId, ideaId));
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(new AppError(ex.Message));
+            }
+        }
+
+        [HttpDelete("{userId}")]
+        public ActionResult DeleteUser(string userId)
+        {
+            try
+            {
+                _usersService.DeleteUser(userId);
                 return NoContent();
             }
             catch (NotFoundException ex)
